@@ -1,0 +1,7 @@
+1,Lemonade,100,1.99,Chipotle
+2,Orange Juice,120,1.99,Chipotle
+3,Coke,200,2.59,Chipotle
+4,Sprite,200,2.59,Chipotle
+5,Lemonade,100,2.99,McDonalds
+6,Orange Juice,120,2.59,McDonalds
+7,Coke,200,2.99,McDonalds
