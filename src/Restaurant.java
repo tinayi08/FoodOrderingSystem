@@ -14,6 +14,7 @@ public class Restaurant {
     Menu menu;
     int id;
 
+
     public Menu getMenu() {
         return menu;
     }
@@ -53,8 +54,7 @@ public class Restaurant {
                 String phoneNumber = restaurantInfo[4];
                 int capacity = Integer.parseInt(restaurantInfo[5]);
                 int averageWaitTime = Integer.parseInt(restaurantInfo[6]);
-
-
+                
                 Restaurant restaurants = new Restaurant(id, name, cuisine, zipcode, phoneNumber, capacity, averageWaitTime);
                 restaurantList.add(restaurants);
             }
@@ -67,15 +67,9 @@ public class Restaurant {
         return restaurantList;
     }
 
-//    public void display() {
-//        for (Restaurant r : restaurantList) {
-//            System.out.println(r.toString());
-//        }
-//    }
-
     @Override
     public String toString() {
-        return "Select" + id +
+        return "Select " + id +
                 " for " + name +
                 ", Cuisine: " + cuisine +
                 ", Average Wait Time: " + averageWaitTime;
