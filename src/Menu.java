@@ -28,32 +28,24 @@ public class Menu {
         this.booze = booze;
     }
 
-    public void display() {
-
+    public void displayDrinks() {
+        System.out.println("\nPlease select from the following beverages:");
         for (Drink d : drinks) {
             System.out.println(d.toString());
-        }
-
-        for (Food f : food) {
-            System.out.println(f.toString());
-        }
-
-        for (AlcoholicDrink a : booze) {
-            System.out.println(a.toString());
-        }
-    }
-
-    public void displayDrinks() {
-        System.out.println("\nPlease select from the following items:");
-        for (Drink d : drinks) {
-            System.out.println(d.toStringForOrdering());
         }
     }
 
     public void displayFood() {
-        System.out.println("\nPlease select from the following items:");
+        System.out.println("\nPlease select from the following food items:");
         for (Food f : food) {
-            System.out.println(f.toStringForOrdering());
+            System.out.println(f.toString());
+        }
+    }
+
+    public void displayBooze() {
+        System.out.println("\nPlease select from the following alcoholic beverages:");
+        for (AlcoholicDrink b : booze) {
+            System.out.println(b.toString());
         }
     }
 }
