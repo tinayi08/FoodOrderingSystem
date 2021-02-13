@@ -39,35 +39,33 @@ public class Restaurant {
         return menu;
     }
 
-//    public static ArrayList populateRestaurants() {
-//        ArrayList <Restaurant> restaurantList = new ArrayList<>();
-//        try {
-//            BufferedReader in = new BufferedReader(new FileReader("src/Files/Restaurants.txt"));
-//            String str;
-//            while((str = in.readLine()) != null) {
-//                String [] restaurantInfo = str.split(",");
-//                int id = Integer.parseInt(restaurantInfo[0]);
-//                String name = restaurantInfo[1];
-//                String cuisine = restaurantInfo[2];
-//                int zipcode = Integer.parseInt(restaurantInfo[3]);
-//                String phoneNumber = restaurantInfo[4];
-//                int capacity = Integer.parseInt(restaurantInfo[5]);
-//                int averageWaitTime = Integer.parseInt(restaurantInfo[6]);
-//                Menu menu = restaurantInfo[7];
-//                //HOW DO I DO THE MENU PART??
-//
-//
-//                Restaurant restaurants = new Restaurant(id, name, cuisine, zipcode, phoneNumber, capacity, averageWaitTime, menu);
-//                restaurantList.add(restaurants);
-//            }
-//            in.close();
-//        } catch (FileNotFoundException exc) {
-//            exc.printStackTrace();
-//        } catch (IOException exc) {
-//            exc.printStackTrace();
-//        }
-//        return restaurantList;
-//    }
+    public static ArrayList displayAll() {
+        ArrayList <Restaurant> restaurantList = new ArrayList<>();
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("src/Files/Restaurants.txt"));
+            String str;
+            while((str = in.readLine()) != null) {
+                String [] restaurantInfo = str.split(",");
+                int id = Integer.parseInt(restaurantInfo[0]);
+                String name = restaurantInfo[1];
+                String cuisine = restaurantInfo[2];
+                int zipcode = Integer.parseInt(restaurantInfo[3]);
+                String phoneNumber = restaurantInfo[4];
+                int capacity = Integer.parseInt(restaurantInfo[5]);
+                int averageWaitTime = Integer.parseInt(restaurantInfo[6]);
+
+
+                Restaurant restaurants = new Restaurant(id, name, cuisine, zipcode, phoneNumber, capacity, averageWaitTime);
+                restaurantList.add(restaurants);
+            }
+            in.close();
+        } catch (FileNotFoundException exc) {
+            exc.printStackTrace();
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+        return restaurantList;
+    }
 
 //    public void display() {
 //        for (Restaurant r : restaurantList) {
