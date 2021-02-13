@@ -49,5 +49,12 @@ public class Menu {
             System.out.println(d.toStringForOrdering());
         }
     }
+
+    public void displayFood() {
+        System.out.println("\nPlease select from the following items:");
+        for (Food f : food) {
+            System.out.println(f.toStringForOrdering());
+        }
+    }
 }
 
