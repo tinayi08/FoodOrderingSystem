@@ -6,7 +6,6 @@ public class AppController {
     public static void main(String[] args) {
         AppController controller = new AppController();
         controller.initUser();
-
         controller.orderingLogic();
     }
 
@@ -16,7 +15,6 @@ public class AppController {
     }
 
     public Restaurant selectRestaurant() {
-
         System.out.println("\nPlease select from the following restaurants: ");
         ArrayList<Restaurant> rest = Restaurant.displayAll();
         for(Restaurant r : rest) {
@@ -24,7 +22,7 @@ public class AppController {
         }
         Scanner scan = new Scanner(System.in);
         int selection = scan.nextInt();
-        //add a validator - while selection is less than arrayList length
+        selection = Validator.restaurantSelection(selection,rest);
         return rest.get(selection-1);
     }
 
@@ -32,6 +30,7 @@ public class AppController {
         Restaurant selectedRestaurant = selectRestaurant();
         selectedRestaurant.getMenu().displayDrinks();
         selectedRestaurant.getMenu().displayFood();
+        selectedRestaurant.getMenu().displayBooze();
         //user selects drinks
         //adds drinks to order and get total
         //display booze, selects booze, adds booze to order and get total
