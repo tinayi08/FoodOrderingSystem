@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,8 +6,8 @@ public class AppController {
     public static void main(String[] args) {
         AppController controller = new AppController();
         controller.initUser();
-        controller.orderingLogic();
 
+        controller.orderingLogic();
     }
 
     public void initUser() {
@@ -19,22 +18,20 @@ public class AppController {
     public Restaurant selectRestaurant() {
 
         System.out.println("\nPlease select from the following restaurants: ");
-        Restaurant chipotle = new Restaurant(1,"Chipotle", "Mexican Fast Food", 92780,
-                "949-555-5555", 25, 45);
-        //Restaurant.display();
-        System.out.println("Select 1 for " + chipotle.name + " - " + chipotle.cuisine + ", current wait time is " + chipotle.averageWaitTime + " minutes.");
+        ArrayList<Restaurant> rest = Restaurant.displayAll();
+        for(Restaurant r : rest) {
+            System.out.println(r.toString());
+        }
         Scanner scan = new Scanner(System.in);
         int selection = scan.nextInt();
         //add a validator - while selection is less than arrayList length
-//        if(selection == 1) { // display the restaurant menu according to the ID
-//            chipotle.getMenu().display();
-//        }
-
-        return chipotle;
+        return rest.get(selection-1);
     }
 
     public void orderingLogic(){
-        selectRestaurant().getMenu().displayDrinks();
+        Restaurant selectedRestaurant = selectRestaurant();
+        selectedRestaurant.getMenu().displayDrinks();
+        selectedRestaurant.getMenu().displayFood();
         //user selects drinks
         //adds drinks to order and get total
         //display booze, selects booze, adds booze to order and get total
