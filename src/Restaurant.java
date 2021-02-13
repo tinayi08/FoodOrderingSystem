@@ -30,12 +30,12 @@ public class Restaurant {
         this.capacity = capacity;
         this.averageWaitTime = averageWaitTime;
         this.id = id;
-        this.menu = new Menu(MenuHelper.populateFood(), MenuHelper.populateDrink(this.name), MenuHelper.populateBooze());
+        this.menu = new Menu(MenuHelper.populateFood(this.name), MenuHelper.populateDrink(this.name), MenuHelper.populateBooze(this.name));
 
     }
 
     public Menu createMenu() {
-        Menu menu = new Menu(MenuHelper.populateFood(), MenuHelper.populateDrink(this.name), MenuHelper.populateBooze());
+        Menu menu = new Menu(MenuHelper.populateFood(this.name), MenuHelper.populateDrink(this.name), MenuHelper.populateBooze(this.name));
         return menu;
     }
 

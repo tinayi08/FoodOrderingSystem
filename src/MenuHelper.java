@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MenuHelper {
 
-    public static ArrayList populateBooze() {
+    public static ArrayList populateBooze(String restaurantName) {
         ArrayList <AlcoholicDrink> boozeList = new ArrayList<>();
         try {
             BufferedReader in = new BufferedReader(new FileReader("src/Files/Booze.txt"));
@@ -14,14 +14,16 @@ public class MenuHelper {
             //TODO - add a condition where readLine is not null and not an empty line
             while ((str = in.readLine()) != null){
                 String [] boozeInfo = str.split(",");
-                int number = Integer.parseInt(boozeInfo[0]);
-                String name = boozeInfo[1];
-                int calories = Integer.parseInt(boozeInfo[2]);
-                double price = Double.parseDouble(boozeInfo[3]);
-                String alcohol = boozeInfo[4];
-                double percentage = Double.parseDouble(boozeInfo[5]);
-                AlcoholicDrink booze = new AlcoholicDrink(number, name, calories, price, alcohol, percentage);
-                boozeList.add(booze);
+                if(restaurantName.equalsIgnoreCase(boozeInfo[4])) {
+                    int number = Integer.parseInt(boozeInfo[0]);
+                    String name = boozeInfo[1];
+                    int calories = Integer.parseInt(boozeInfo[2]);
+                    double price = Double.parseDouble(boozeInfo[3]);
+                    String alcohol = boozeInfo[4];
+                    double percentage = Double.parseDouble(boozeInfo[5]);
+                    AlcoholicDrink booze = new AlcoholicDrink(number, name, calories, price, alcohol, percentage);
+                    boozeList.add(booze);
+                }
             }
             in.close();
         } catch (FileNotFoundException exc) {
@@ -74,7 +76,7 @@ public class MenuHelper {
      *
      * @return ArrayList Food
      */
-    public static ArrayList populateFood() {
+    public static ArrayList populateFood(String restaurantName) {
 
         ArrayList <Food> foodItems = new ArrayList<>();
         try {
@@ -82,12 +84,14 @@ public class MenuHelper {
             String str;
             while ((str = in.readLine()) != null) {
                 String [] foodInfo = str.split(",");
-                int id = Integer.parseInt(foodInfo[0]);
-                String name = foodInfo[1];
-                int calories = Integer.parseInt(foodInfo[2]);
-                double price = Double.parseDouble(foodInfo[3]);
-                Food food = new Food(id, name, calories, price);
-                foodItems.add(food);
+                if(restaurantName.equalsIgnoreCase(foodInfo[4])) {
+                    int id = Integer.parseInt(foodInfo[0]);
+                    String name = foodInfo[1];
+                    int calories = Integer.parseInt(foodInfo[2]);
+                    double price = Double.parseDouble(foodInfo[3]);
+                    Food food = new Food(id, name, calories, price);
+                    foodItems.add(food);
+                }
 
             }
             in.close();

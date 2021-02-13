@@ -1,3 +1,3 @@
-1,Corona,100,8.99,Beer,4.2
-2,Margarita,150,12.99,Tequila,33
-3,Tequila Shot,95,7.99,Tequila,40
+1,Corona,100,8.99,Beer,4.2,Chipotle
+2,Margarita,150,12.99,Tequila,33,Chipotle
+3,Tequila Shot,95,7.99,Tequila,40,Chipotle
