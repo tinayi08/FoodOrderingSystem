@@ -10,8 +10,8 @@ class AlcoholicDrink extends Drink {
 
     @Override
     public String toString() {
-        return "Alcoholic Drink - " +
-                name +
+        return "Select " + id +
+                " for " + name +
                 ", Liquor Type: " + liquorType +
                 ", Calories: " + calories +
                 ", Alcohol Percentage: " + percentage +
