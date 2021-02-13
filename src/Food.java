@@ -18,6 +18,13 @@ public class Food {
         this.name = name;
         this.id = id;
     }
+
+    public String toStringForOrdering() {
+        return "Select " + id +
+                " for " + name +
+                ", Calories: " + calories +
+                ", Price: $" + price;
+    }
 }
 
 
