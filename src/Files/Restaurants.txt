@@ -1,1 +1,2 @@
-1,Chipotle,Mexican Fast Food, 92780,949-555-5555,25,45
+1,Chipotle,Mexican Fast Food,92780,949-555-5555,25,45
+2,McDonalds,American Fast Food,92780,714-444-4444,10,30
