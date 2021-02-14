@@ -5,13 +5,14 @@ public class AppController {
 
     public static void main(String[] args) {
         AppController controller = new AppController();
-        controller.initUser();
-        controller.orderingLogic();
+        //controller.initUser();
+        controller.orderingLogic(controller.initUser());
     }
 
-    public void initUser() {
+    public User initUser() {
         User user = new User();
         user.create();
+        return user;
     }
 
     public Restaurant selectRestaurant() {
@@ -26,9 +27,11 @@ public class AppController {
         return rest.get(selection-1);
     }
 
-    public void orderingLogic(){
+    public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
+        Order orderDrink = new Order(user, selectedRestaurant);
         selectedRestaurant.getMenu().displayDrinks();
+        orderDrink.orderDrinks();
         selectedRestaurant.getMenu().displayFood();
         selectedRestaurant.getMenu().displayBooze();
         //user selects drinks
@@ -41,11 +44,9 @@ public class AppController {
 }
 
 
-//for the user to select from. be able to select item
 
 //once they have selected what they want, it will be added to the order object, then display order etc
 
-//display menu
 //enter drink order based on ID number, then get the value and add it to their array list of drinks, foods, booze, etc
 
 
