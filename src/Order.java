@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Order {
     User customer;
@@ -14,10 +15,21 @@ public class Order {
         System.out.println("Your order number is: " + orderNumber);
     }
 
-    public void orderDrinks() {
-        System.out.println("Please select from the following Drinks:");
-        restaurant.getMenu().displayDrinks();
+    public Order(User customer, Restaurant restaurant) {
+        this.customer = customer;
+        this.restaurant = restaurant;
     }
 
+    public void orderDrinks() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nPlease select from the items above to add to your order:");
+        int selectedDrink = scan.nextInt();
+        Drink addDrink = OrderHelper.getDrink(selectedDrink);
+        ArrayList<Drink> drinksOrdered = new ArrayList<>();
+        drinksOrdered.add(addDrink);
+        for (Drink d : drinksOrdered) {
+            System.out.println(d.toString());
+        }
+    }
 
 }
