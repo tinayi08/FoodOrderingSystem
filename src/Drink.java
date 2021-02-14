@@ -15,17 +15,14 @@ public class Drink {
 
     @Override
     public String toString() {
-        return "Drink - " +
-                name +
-                ", Calories: " + calories +
-                ", Price: $" + price;
-    }
-
-    public String toStringForOrdering() {
         return "Select " + id +
                 " for " + name +
                 ", Calories: " + calories +
                 ", Price: $" + price;
+    }
+
+    public String drinkAdded() {
+        return name;
     }
 }
 
