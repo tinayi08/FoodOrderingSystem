@@ -22,14 +22,21 @@ public class Order {
 
     public void orderDrinks() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("\nPlease select from the items above to add to your order:");
+        System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section. ");
         int selectedDrink = scan.nextInt();
-        Drink addDrink = OrderHelper.getDrink(selectedDrink);
         ArrayList<Drink> drinksOrdered = new ArrayList<>();
-        drinksOrdered.add(addDrink);
-        for (Drink d : drinksOrdered) {
-            System.out.println(d.toString());
+        while(selectedDrink != 0) {
+            Drink addDrink = OrderHelper.getDrink(selectedDrink);
+            drinksOrdered.add(addDrink);
+            System.out.println("Order has been added. Please add another selection or enter 0 to move to the next section.");
+            selectedDrink = scan.nextInt();
         }
+
+        System.out.println("Drinks added:");
+        for (Drink d : drinksOrdered) {
+            System.out.println(d.drinkAdded());
+        }
+
     }
 
 }
