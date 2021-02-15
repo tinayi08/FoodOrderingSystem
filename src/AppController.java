@@ -29,12 +29,13 @@ public class AppController {
 
     public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
-        Order orderDrink = new Order(user, selectedRestaurant);
+        Order order = new Order(user, selectedRestaurant);
         selectedRestaurant.getMenu().displayDrinks();
-        orderDrink.orderDrinks();
+        order.orderDrinks();
         selectedRestaurant.getMenu().displayFood();
+        order.orderFood();
         selectedRestaurant.getMenu().displayBooze();
-        //user selects drinks
+        order.orderBooze();
         //adds drinks to order and get total
         //display booze, selects booze, adds booze to order and get total
         //display food, selects food, adds food to order and gets total
