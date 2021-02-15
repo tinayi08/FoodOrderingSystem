@@ -17,4 +17,8 @@ class AlcoholicDrink extends Drink {
                 ", Alcohol Percentage: " + percentage +
                 "%, Price: $" + price;
     }
+
+    public String boozeAdded() {
+        return name;
+    }
 }
