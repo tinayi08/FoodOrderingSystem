@@ -6,8 +6,8 @@ public class Food {
 
     @Override
     public String toString() {
-        return "Food - " +
-                name +
+        return "Select " + id +
+                " for " + name +
                 ", Calories: " + calories +
                 ", Price: $" + price;
     }
@@ -19,12 +19,10 @@ public class Food {
         this.id = id;
     }
 
-    public String toStringForOrdering() {
-        return "Select " + id +
-                " for " + name +
-                ", Calories: " + calories +
-                ", Price: $" + price;
+    public String foodAdded() {
+        return name;
     }
+
 }
 
 
