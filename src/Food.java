@@ -4,6 +4,14 @@ public class Food {
     String name;
     int id;
 
+    public double getPrice() {
+        return price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Select " + id +

@@ -4,6 +4,13 @@ public class Drink {
     int calories;
     double price;
 
+    public int getId() {
+        return id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 
     public Drink(int id, String name, int calories, double price) {
         this.id = id;
