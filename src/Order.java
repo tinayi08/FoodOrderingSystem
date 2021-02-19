@@ -11,6 +11,7 @@ public class Order {
     static int orderNumber;
 
     public static void populateOrderNum() {
+        orderNumber = 1000;
         orderNumber++;
         System.out.println("Your order number is: " + orderNumber);
     }
@@ -20,13 +21,15 @@ public class Order {
         this.restaurant = restaurant;
     }
 
+
+
     public void orderDrinks() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         int selectedDrink = scan.nextInt();
         ArrayList<Drink> drinksOrdered = new ArrayList<>();
         while (selectedDrink != 0) {
-            //selectedDrink = Validator.drinkSelection(selectedDrink, )
+            //selectedDrink = Validator.drinkSelection(selectedDrink, );
             Drink addDrink = OrderHelper.getDrink(selectedDrink);
             drinksOrdered.add(addDrink);
             System.out.println("Item has been added. Please add another item or enter 0 to move to the next section.");
@@ -74,8 +77,10 @@ public class Order {
         }
     }
 
+    public void placeOrder() {
+        System.out.println("\nThank you for your order.");
+        populateOrderNum();
 
-
-
+    }
 
 }

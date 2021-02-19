@@ -14,7 +14,7 @@ public class MenuHelper {
             //TODO - add a condition where readLine is not null and not an empty line
             while ((str = in.readLine()) != null){
                 String [] boozeInfo = str.split(",");
-                if(restaurantName.equalsIgnoreCase(boozeInfo[4])) {
+                if(restaurantName.equalsIgnoreCase(boozeInfo[6])) {
                     int number = Integer.parseInt(boozeInfo[0]);
                     String name = boozeInfo[1];
                     int calories = Integer.parseInt(boozeInfo[2]);
@@ -101,7 +101,5 @@ public class MenuHelper {
             exc.printStackTrace();
         }
         return foodItems;
-
-
     }
 }

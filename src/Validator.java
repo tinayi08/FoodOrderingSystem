@@ -22,4 +22,13 @@ public class Validator {
         return restSelection;
     }
 
+    public static int drinkSelection(int selectedItem, ArrayList<Drink> drink) {
+        Scanner scan = new Scanner(System.in);
+        while(selectedItem > drink.size()){
+            System.out.println("Please enter a valid entry.");
+            selectedItem = scan.nextInt();
+        }
+        return selectedItem;
+    }
+
 }

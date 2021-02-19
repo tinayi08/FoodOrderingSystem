@@ -27,6 +27,7 @@ public class AppController {
         return rest.get(selection-1);
     }
 
+
     public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
         Order order = new Order(user, selectedRestaurant);
@@ -36,18 +37,10 @@ public class AppController {
         order.orderFood();
         selectedRestaurant.getMenu().displayBooze();
         order.orderBooze();
-        //adds drinks to order and get total
-        //display booze, selects booze, adds booze to order and get total
-        //display food, selects food, adds food to order and gets total
-        //display order total and order number
-
+        //get totals from each section
+        //how to get the validator to work
+        //need to add a validator to only allow order placing for items listed not for other restaurants
+        //skip sections if there is no items for that restaurant
+        order.placeOrder();
     }
 }
-
-
-
-//once they have selected what they want, it will be added to the order object, then display order etc
-
-//enter drink order based on ID number, then get the value and add it to their array list of drinks, foods, booze, etc
-
-

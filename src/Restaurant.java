@@ -14,6 +14,13 @@ public class Restaurant {
     Menu menu;
     int id;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Menu getMenu() {
         return menu;
