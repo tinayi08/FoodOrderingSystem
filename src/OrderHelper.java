@@ -12,7 +12,7 @@ public class OrderHelper {
         double price = 0;
 
         try {
-            BufferedReader in = new BufferedReader(new FileReader("src/Files/Drinks.txt"));
+            BufferedReader in = new BufferedReader(new FileReader(File.DRINKS.path));
             String str;
             while((str = in.readLine()) != null) {
                 String [] drinkInfo = str.split(",");
@@ -42,7 +42,7 @@ public class OrderHelper {
         double price = 0;
 
         try {
-            BufferedReader in = new BufferedReader(new FileReader("src/Files/Food.txt"));
+            BufferedReader in = new BufferedReader(new FileReader(File.FOOD.path));
             String str;
             while((str = in.readLine()) != null) {
                 String [] foodInfo = str.split(",");
@@ -74,7 +74,7 @@ public class OrderHelper {
         double percentage = 0;
 
         try {
-            BufferedReader in = new BufferedReader(new FileReader("src/Files/Booze.txt"));
+            BufferedReader in = new BufferedReader(new FileReader(File.BOOZE.path));
             String str;
 
             while((str = in.readLine()) != null) {

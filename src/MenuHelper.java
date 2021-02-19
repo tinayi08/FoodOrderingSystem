@@ -9,7 +9,7 @@ public class MenuHelper {
     public static ArrayList populateBooze(String restaurantName) {
         ArrayList <AlcoholicDrink> boozeList = new ArrayList<>();
         try {
-            BufferedReader in = new BufferedReader(new FileReader("src/Files/Booze.txt"));
+            BufferedReader in = new BufferedReader(new FileReader(File.BOOZE.path));
             String str;
             //TODO - add a condition where readLine is not null and not an empty line
             while ((str = in.readLine()) != null){
@@ -44,7 +44,7 @@ public class MenuHelper {
 
         ArrayList <Drink> drinkItems = new ArrayList<>();
          try {
-             BufferedReader in = new BufferedReader(new FileReader("src/Files/Drinks.txt"));
+             BufferedReader in = new BufferedReader(new FileReader(File.DRINKS.path));
              String str;
              while((str = in.readLine()) != null) {
                  String [] drinkInfo = str.split(",");
@@ -80,7 +80,7 @@ public class MenuHelper {
 
         ArrayList <Food> foodItems = new ArrayList<>();
         try {
-            BufferedReader in = new BufferedReader(new FileReader("src/Files/Food.txt"));
+            BufferedReader in = new BufferedReader(new FileReader(File.FOOD.path));
             String str;
             while ((str = in.readLine()) != null) {
                 String [] foodInfo = str.split(",");
