@@ -31,16 +31,23 @@ public class AppController {
     public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
         Order order = new Order(user, selectedRestaurant);
-        selectedRestaurant.getMenu().displayDrinks();
-        order.orderDrinks();
-        selectedRestaurant.getMenu().displayFood();
-        order.orderFood();
-        selectedRestaurant.getMenu().displayBooze();
-        order.orderBooze();
+        int numOfDrinkItems = selectedRestaurant.getMenu().displayDrinks();
+        if (numOfDrinkItems > 0) {
+            order.orderDrinks();
+        }
+        int numOfFoodItems = selectedRestaurant.getMenu().displayFood();
+        if(numOfFoodItems > 0) {
+            order.orderFood();
+        }
+        int numOfBoozeItems = selectedRestaurant.getMenu().displayBooze();
+        if (numOfBoozeItems > 0) {
+            order.orderBooze();
+        }
+
+
         //get totals from each section
-        //how to get the validator to work
-        //need to add a validator to only allow order placing for items listed not for other restaurants
-        //skip sections if there is no items for that restaurant
+
+
         order.placeOrder();
     }
 }
