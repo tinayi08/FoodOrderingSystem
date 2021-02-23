@@ -61,7 +61,6 @@ public class Validator {
 
     public static int boozeSelected(int selectedBooze, ArrayList<AlcoholicDrink> booze) {
         Scanner scan = new Scanner(System.in);
-        selectedBooze = scan.nextInt();
         boolean isValid = false;
         while(!isValid) {
             for(AlcoholicDrink b : booze) {
@@ -71,7 +70,6 @@ public class Validator {
                 } else if (selectedBooze == 0) {
                     return selectedBooze;
                 }
-
             }
             System.out.println("Please enter a valid entry");
             selectedBooze = scan.nextInt();
