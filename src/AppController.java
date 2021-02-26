@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,12 +50,14 @@ public class AppController {
             //order.orderBooze();
         }
         double total = foodTotal + boozeTotal + drinkTotal;
-        System.out.println("\nOrder total is: " + total);
+        DecimalFormat t = new DecimalFormat("#.##");
+
+        System.out.println("\nOrder total is: $" +t.format(total));
         order.placeOrder();
         //return order;
 
     }
-//MenuHelper.populateBooze(order.restaurant.getName())
+
 //    public void finalizeOrder(User user) {
 //        Order order = orderingLogic(user);
 //
