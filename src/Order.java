@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,12 +24,11 @@ public class Order {
 
 
 
-    public void orderDrinks() {
+    public ArrayList orderDrinks() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         int selectedDrink = scan.nextInt();
         ArrayList<Drink> drinksOrdered = new ArrayList<>();
-
         while (selectedDrink != 0) {
             selectedDrink = Validator.drinkSelection(selectedDrink, MenuHelper.populateDrink(this.restaurant.getName()));
             if(selectedDrink != 0) {
@@ -44,13 +44,11 @@ public class Order {
                 System.out.println(d.drinkAdded());
             }
         }
+        return drinksOrdered;
     }
 
-    public void drinksTotal() {
-        //drinksOrdered.get
-    }
 
-    public void orderFood() {
+    public ArrayList orderFood() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         int selectedFood = scan.nextInt();
@@ -70,10 +68,10 @@ public class Order {
                 System.out.println(f.foodAdded());
             }
         }
-
+        return foodOrdered;
     }
 
-    public void orderBooze() {
+    public ArrayList orderBooze() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         int selectedBooze = scan.nextInt();
@@ -94,13 +92,44 @@ public class Order {
                 System.out.println(a.boozeAdded());
             }
         }
+        return boozeOrdered;
 
     }
+
+    public double boozeTotal(ArrayList<AlcoholicDrink> boozeOrdered) {
+        double boozeTotal = 0;
+        for(AlcoholicDrink b : boozeOrdered) {
+            boozeTotal += b.getPrice();
+        }
+        //System.out.println("Alcohol total: " + boozeTotal);
+        return boozeTotal;
+    }
+
+    public double foodTotal(ArrayList<Food> foodOrdered) {
+        double foodTotal = 0;
+        for(Food f : foodOrdered) {
+            foodTotal += f.getPrice();
+        }
+        //System.out.println("Food total: " + foodTotal);
+        return foodTotal;
+    }
+
+    public double drinkTotal(ArrayList<Drink> drinkOrdered) {
+        double drinkTotal = 0;
+        for(Drink d : drinkOrdered) {
+            drinkTotal += d.getPrice();
+        }
+        //System.out.println("Food total: " + foodTotal);
+        return drinkTotal;
+    }
+
 
     public void placeOrder() {
         System.out.println("\nThank you for your order.");
         populateOrderNum();
 
     }
+
+
 
 }

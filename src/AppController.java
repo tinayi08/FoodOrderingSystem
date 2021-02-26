@@ -5,8 +5,8 @@ public class AppController {
 
     public static void main(String[] args) {
         AppController controller = new AppController();
-        //controller.initUser();
         controller.orderingLogic(controller.initUser());
+        //controller.finalizeOrder(controller.initUser());
     }
 
     public User initUser() {
@@ -31,23 +31,35 @@ public class AppController {
     public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
         Order order = new Order(user, selectedRestaurant);
+        double foodTotal = 0;
+        double boozeTotal = 0;
+        double drinkTotal = 0;
         int numOfDrinkItems = selectedRestaurant.getMenu().displayDrinks();
         if (numOfDrinkItems > 0) {
-            order.orderDrinks();
+            drinkTotal = order.drinkTotal(order.orderDrinks());
         }
         int numOfFoodItems = selectedRestaurant.getMenu().displayFood();
         if(numOfFoodItems > 0) {
-            order.orderFood();
+            foodTotal = order.foodTotal(order.orderFood());
+            //order.orderFood();
         }
         int numOfBoozeItems = selectedRestaurant.getMenu().displayBooze();
         if (numOfBoozeItems > 0) {
-            order.orderBooze();
+            boozeTotal = order.boozeTotal(order.orderBooze());
+            //order.orderBooze();
         }
-
-
-        //get totals from each section
-
-
+        double total = foodTotal + boozeTotal + drinkTotal;
+        System.out.println("\nOrder total is: " + total);
         order.placeOrder();
+        //return order;
+
     }
+//MenuHelper.populateBooze(order.restaurant.getName())
+//    public void finalizeOrder(User user) {
+//        Order order = orderingLogic(user);
+//
+//        order.placeOrder();
+//
+//    }
+
 }
