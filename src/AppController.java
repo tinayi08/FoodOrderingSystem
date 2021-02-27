@@ -1,5 +1,5 @@
-import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AppController {
@@ -7,7 +7,6 @@ public class AppController {
     public static void main(String[] args) {
         AppController controller = new AppController();
         controller.orderingLogic(controller.initUser());
-        //controller.finalizeOrder(controller.initUser());
     }
 
     public User initUser() {
@@ -19,12 +18,22 @@ public class AppController {
     public Restaurant selectRestaurant() {
         System.out.println("\nPlease select from the following restaurants: ");
         ArrayList<Restaurant> rest = Restaurant.displayAll();
-        for(Restaurant r : rest) {
+        for (Restaurant r : rest) {
             System.out.println(r.toString());
         }
         Scanner scan = new Scanner(System.in);
-        int selection = scan.nextInt();
-        selection = Validator.restaurantSelection(selection,rest);
+        boolean isValid = false;
+        int selection = 0;
+        while (!isValid) {
+            try {
+                selection = scan.nextInt();
+                selection = Validator.restaurantSelection(selection,rest);
+                isValid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a valid entry");
+                scan.next();
+            }
+        }
         return rest.get(selection-1);
     }
 
@@ -32,37 +41,21 @@ public class AppController {
     public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
         Order order = new Order(user, selectedRestaurant);
-        double foodTotal = 0;
-        double boozeTotal = 0;
-        double drinkTotal = 0;
         int numOfDrinkItems = selectedRestaurant.getMenu().displayDrinks();
         if (numOfDrinkItems > 0) {
-            drinkTotal = order.drinkTotal(order.orderDrinks());
+            order.orderDrinks();
+            order.printOrderedDrinks();
         }
         int numOfFoodItems = selectedRestaurant.getMenu().displayFood();
-        if(numOfFoodItems > 0) {
-            foodTotal = order.foodTotal(order.orderFood());
-            //order.orderFood();
+        if (numOfFoodItems > 0) {
+            order.orderFood();
+            order.printOrderedFood();
         }
         int numOfBoozeItems = selectedRestaurant.getMenu().displayBooze();
         if (numOfBoozeItems > 0) {
-            boozeTotal = order.boozeTotal(order.orderBooze());
-            //order.orderBooze();
+            order.orderBooze();
+            order.printOrderedBooze();
         }
-        double total = foodTotal + boozeTotal + drinkTotal;
-        DecimalFormat t = new DecimalFormat("#.##");
-
-        System.out.println("\nOrder total is: $" +t.format(total));
         order.placeOrder();
-        //return order;
-
     }
-
-//    public void finalizeOrder(User user) {
-//        Order order = orderingLogic(user);
-//
-//        order.placeOrder();
-//
-//    }
-
 }

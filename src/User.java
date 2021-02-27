@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class User {
@@ -16,9 +17,18 @@ public class User {
         System.out.println("Please provide your phone number");
         this.phoneNumber = scan.nextLine();
         System.out.println("What will be your method of payment? Enter 1 for Cash or 2 for Credit Card?");
-        int paymentEntry = scan.nextInt();
-        paymentEntry = Validator.payment(paymentEntry);
-        this.paymentMethod = paymentEntry;
+        boolean isValid = false;
+        while(!isValid) {
+            try {
+                int paymentEntry = scan.nextInt();
+                paymentEntry = Validator.payment(paymentEntry);
+                this.paymentMethod = paymentEntry;
+                isValid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a valid entry");
+                scan.next();
+            }
+        }
     }
 
 
