@@ -7,14 +7,14 @@ import java.util.ArrayList;
 public class MenuHelper {
 
     public static ArrayList populateBooze(String restaurantName) {
-        ArrayList <AlcoholicDrink> boozeList = new ArrayList<>();
+        ArrayList<AlcoholicDrink> boozeList = new ArrayList<>();
         try {
             BufferedReader in = new BufferedReader(new FileReader(File.BOOZE.path));
             String str;
             //TODO - add a condition where readLine is not null and not an empty line
             while ((str = in.readLine()) != null){
                 String [] boozeInfo = str.split(",");
-                if(restaurantName.equalsIgnoreCase(boozeInfo[6])) {
+                if (restaurantName.equalsIgnoreCase(boozeInfo[6])) {
                     int number = Integer.parseInt(boozeInfo[0]);
                     String name = boozeInfo[1];
                     int calories = Integer.parseInt(boozeInfo[2]);
@@ -28,7 +28,7 @@ public class MenuHelper {
             in.close();
         } catch (FileNotFoundException exc) {
             exc.printStackTrace();
-        }catch (IOException exc) {
+        } catch (IOException exc) {
             exc.printStackTrace();
         }
         return boozeList;
@@ -42,13 +42,13 @@ public class MenuHelper {
      */
     public static ArrayList populateDrink(String restaurantName) {
 
-        ArrayList <Drink> drinkItems = new ArrayList<>();
+        ArrayList<Drink> drinkItems = new ArrayList<>();
          try {
              BufferedReader in = new BufferedReader(new FileReader(File.DRINKS.path));
              String str;
-             while((str = in.readLine()) != null) {
+             while ((str = in.readLine()) != null) {
                  String [] drinkInfo = str.split(",");
-                 if(restaurantName.equalsIgnoreCase(drinkInfo[4])){
+                 if (restaurantName.equalsIgnoreCase(drinkInfo[4])){
                      int id = Integer.parseInt(drinkInfo[0]);
                      String drinkName = drinkInfo[1];
                      int calories = Integer.parseInt(drinkInfo[2]);
@@ -65,8 +65,6 @@ public class MenuHelper {
              exc.printStackTrace();
          }
          return drinkItems;
-
-
     }
 
     /**
@@ -78,13 +76,13 @@ public class MenuHelper {
      */
     public static ArrayList populateFood(String restaurantName) {
 
-        ArrayList <Food> foodItems = new ArrayList<>();
+        ArrayList<Food> foodItems = new ArrayList<>();
         try {
             BufferedReader in = new BufferedReader(new FileReader(File.FOOD.path));
             String str;
             while ((str = in.readLine()) != null) {
                 String [] foodInfo = str.split(",");
-                if(restaurantName.equalsIgnoreCase(foodInfo[4])) {
+                if (restaurantName.equalsIgnoreCase(foodInfo[4])) {
                     int id = Integer.parseInt(foodInfo[0]);
                     String name = foodInfo[1];
                     int calories = Integer.parseInt(foodInfo[2]);
@@ -92,12 +90,11 @@ public class MenuHelper {
                     Food food = new Food(id, name, calories, price);
                     foodItems.add(food);
                 }
-
             }
             in.close();
         } catch (FileNotFoundException exc) {
             exc.printStackTrace();
-        }catch (IOException exc) {
+        } catch (IOException exc) {
             exc.printStackTrace();
         }
         return foodItems;

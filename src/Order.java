@@ -7,8 +7,8 @@ public class Order {
     User customer;
     Restaurant restaurant;
     ArrayList<Drink> drinksOrdered;
-    ArrayList <Food> foodOrdered;
-    ArrayList <AlcoholicDrink> boozeOrdered;
+    ArrayList<Food> foodOrdered;
+    ArrayList<AlcoholicDrink> boozeOrdered;
     double totalPrice;
     static int orderNumber;
 
@@ -23,19 +23,17 @@ public class Order {
         this.restaurant = restaurant;
     }
 
-
-
     public void orderDrinks() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         this.drinksOrdered = new ArrayList<>();
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
                 int selectedDrink = scan.nextInt();
                 while (selectedDrink != 0) {
                     selectedDrink = Validator.drinkSelection(selectedDrink, MenuHelper.populateDrink(this.restaurant.getName()));
-                    if(selectedDrink != 0) {
+                    if (selectedDrink != 0) {
                         Drink addDrink = OrderHelper.getDrink(selectedDrink);
                         this.drinksOrdered.add(addDrink);
                         System.out.println("Item has been added. Please add another item or enter 0 to move to the next section.");
@@ -65,9 +63,8 @@ public class Order {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         this.foodOrdered = new ArrayList<>();
-
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
                 int selectedFood = scan.nextInt();
                 while (selectedFood != 0) {
@@ -88,7 +85,7 @@ public class Order {
     }
 
     public void printOrderedFood() {
-        if(this.foodOrdered.size() > 0) {
+        if (this.foodOrdered.size() > 0) {
             System.out.println("Food added:");
             for (Food f : this.foodOrdered) {
                 System.out.println(f.foodAdded());
@@ -100,12 +97,12 @@ public class Order {
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
         this.boozeOrdered = new ArrayList<>();
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
                 int selectedBooze = scan.nextInt();
                 while (selectedBooze != 0) {
                     selectedBooze = Validator.boozeSelected(selectedBooze, MenuHelper.populateBooze(this.restaurant.getName()));
-                    if(selectedBooze != 0) {
+                    if (selectedBooze != 0) {
                         AlcoholicDrink addBooze = OrderHelper.getBooze(selectedBooze);
                         this.boozeOrdered.add(addBooze);
                         System.out.println("Item has been added. Please add another item or enter 0 to move to the next section.");
@@ -134,13 +131,13 @@ public class Order {
         double foodTotal = 0;
         double boozeTotal = 0;
         double drinkTotal = 0;
-        for(Food f : this.foodOrdered) {
+        for (Food f : this.foodOrdered) {
             foodTotal += f.getPrice();
         }
-        for(Drink d : this.drinksOrdered) {
+        for (Drink d : this.drinksOrdered) {
             drinkTotal += d.getPrice();
         }
-        for(AlcoholicDrink b : this.boozeOrdered) {
+        for (AlcoholicDrink b : this.boozeOrdered) {
             boozeTotal += b.getPrice();
         }
         this.totalPrice = foodTotal + boozeTotal + drinkTotal;

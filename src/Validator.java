@@ -15,7 +15,7 @@ public class Validator {
 
     public static int restaurantSelection(int restSelection, ArrayList<Restaurant> rest) {
         Scanner scan = new Scanner(System.in);
-        while(restSelection > (rest.size())|| restSelection == 0) {
+        while (restSelection > (rest.size()) || restSelection == 0) {
             System.out.println("Please enter a valid entry");
             restSelection = scan.nextInt();
         }
@@ -25,15 +25,14 @@ public class Validator {
     public static int drinkSelection(int selectedItem, ArrayList<Drink> drink) {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
-        while(!isValid){
-            for(Drink d : drink) {
-                if(selectedItem == d.getId()) {
+        while (!isValid){
+            for (Drink d : drink) {
+                if (selectedItem == d.getId()) {
                     isValid = true;
                     return selectedItem;
                 } else if (selectedItem == 0) {
                     return selectedItem;
                 }
-
             }
             System.out.println("Please enter a valid entry");
             selectedItem = scan.nextInt();
@@ -46,7 +45,7 @@ public class Validator {
         boolean isValid = false;
         while (!isValid) {
             for (Food f : food) {
-                if(selectedItem == f.getId()){
+                if (selectedItem == f.getId()){
                     isValid = true;
                     return selectedItem;
                 } else if (selectedItem == 0) {
@@ -62,9 +61,9 @@ public class Validator {
     public static int boozeSelected(int selectedBooze, ArrayList<AlcoholicDrink> booze) {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
-        while(!isValid) {
-            for(AlcoholicDrink b : booze) {
-                if(selectedBooze == b.getId()) {
+        while (!isValid) {
+            for (AlcoholicDrink b : booze) {
+                if (selectedBooze == b.getId()) {
                     isValid = true;
                     return selectedBooze;
                 } else if (selectedBooze == 0) {

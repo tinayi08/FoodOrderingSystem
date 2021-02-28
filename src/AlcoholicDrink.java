@@ -1,4 +1,4 @@
-class AlcoholicDrink extends Drink {
+public class AlcoholicDrink extends Drink {
     String liquorType;
     double percentage;
 

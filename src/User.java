@@ -18,7 +18,7 @@ public class User {
         this.phoneNumber = scan.nextLine();
         System.out.println("What will be your method of payment? Enter 1 for Cash or 2 for Credit Card?");
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
                 int paymentEntry = scan.nextInt();
                 paymentEntry = Validator.payment(paymentEntry);
@@ -30,6 +30,4 @@ public class User {
             }
         }
     }
-
-
 }

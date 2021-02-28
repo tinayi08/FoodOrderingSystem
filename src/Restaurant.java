@@ -48,11 +48,11 @@ public class Restaurant {
     }
 
     public static ArrayList displayAll() {
-        ArrayList <Restaurant> restaurantList = new ArrayList<>();
+        ArrayList<Restaurant> restaurantList = new ArrayList<>();
         try {
             BufferedReader in = new BufferedReader(new FileReader(File.RESTAURANTS.path));
             String str;
-            while((str = in.readLine()) != null) {
+            while ((str = in.readLine()) != null) {
                 String [] restaurantInfo = str.split(",");
                 int id = Integer.parseInt(restaurantInfo[0]);
                 String name = restaurantInfo[1];
