@@ -1,3 +1,7 @@
+package model;
+
+import utility.MenuHelper;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

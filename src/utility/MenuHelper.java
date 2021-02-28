@@ -1,3 +1,10 @@
+package utility;
+
+import model.AlcoholicDrink;
+import model.Drink;
+import model.File;
+import model.Food;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -36,9 +43,9 @@ public class MenuHelper {
 
     /**
      * Method will read drink items from the file and will populate and
-     * return as an ArrayList Drink
+     * return as an ArrayList model.Drink
      *
-     * @return ArrayList Drink
+     * @return ArrayList model.Drink
      */
     public static ArrayList populateDrink(String restaurantName) {
 
@@ -70,9 +77,9 @@ public class MenuHelper {
     /**
      *
      * Method will read food items from the file and will populate
-     * and return as an ArrayList Food
+     * and return as an ArrayList model.Food
      *
-     * @return ArrayList Food
+     * @return ArrayList model.Food
      */
     public static ArrayList populateFood(String restaurantName) {
 

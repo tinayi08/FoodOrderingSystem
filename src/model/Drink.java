@@ -1,3 +1,5 @@
+package model;
+
 public class Drink {
     int id;
     String name;

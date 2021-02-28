@@ -1,3 +1,10 @@
+package utility;
+
+import model.AlcoholicDrink;
+import model.Drink;
+import model.File;
+import model.Food;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

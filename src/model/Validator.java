@@ -1,3 +1,10 @@
+package model;
+
+import model.AlcoholicDrink;
+import model.Drink;
+import model.Food;
+import model.Restaurant;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

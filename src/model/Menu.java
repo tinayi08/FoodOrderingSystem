@@ -1,3 +1,9 @@
+package model;
+
+import model.AlcoholicDrink;
+import model.Drink;
+import model.Food;
+
 import java.util.ArrayList;
 
 public class Menu {

@@ -1,3 +1,11 @@
+package model;
+
+import model.AlcoholicDrink;
+import model.Drink;
+import model.Food;
+import utility.MenuHelper;
+import utility.OrderHelper;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -86,7 +94,7 @@ public class Order {
 
     public void printOrderedFood() {
         if (this.foodOrdered.size() > 0) {
-            System.out.println("Food added:");
+            System.out.println("model.Food added:");
             for (Food f : this.foodOrdered) {
                 System.out.println(f.foodAdded());
             }
@@ -143,7 +151,7 @@ public class Order {
         this.totalPrice = foodTotal + boozeTotal + drinkTotal;
         DecimalFormat t = new DecimalFormat("#.##");
 
-        System.out.println("\nOrder total is: $" +t.format(this.totalPrice));
+        System.out.println("\nmodel.Order total is: $" +t.format(this.totalPrice));
         populateOrderNum();
     }
 

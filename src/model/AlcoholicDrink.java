@@ -1,3 +1,5 @@
+package model;
+
 public class AlcoholicDrink extends Drink {
     String liquorType;
     double percentage;

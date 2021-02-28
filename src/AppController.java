@@ -1,3 +1,8 @@
+import model.Order;
+import model.Restaurant;
+import model.User;
+import model.Validator;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,17 +22,21 @@ public class AppController {
 
     public Restaurant selectRestaurant() {
         System.out.println("\nPlease select from the following restaurants: ");
+        System.out.println("1");
         ArrayList<Restaurant> rest = Restaurant.displayAll();
         for (Restaurant r : rest) {
             System.out.println(r.toString());
         }
+        System.out.println("2");
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         int selection = 0;
         while (!isValid) {
             try {
                 selection = scan.nextInt();
+                System.out.println("3");
                 selection = Validator.restaurantSelection(selection,rest);
+                System.out.println("4");
                 isValid = true;
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid entry");

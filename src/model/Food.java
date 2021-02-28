@@ -1,3 +1,5 @@
+package model;
+
 public class Food {
     double price;
     int calories;
