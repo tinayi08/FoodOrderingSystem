@@ -1,8 +1,5 @@
 package model;
 
-import model.AlcoholicDrink;
-import model.Drink;
-import model.Food;
 import utility.MenuHelper;
 import utility.OrderHelper;
 
@@ -54,7 +51,6 @@ public class Order {
                 scan.next();
             }
         }
-
 
     }
 
@@ -151,7 +147,7 @@ public class Order {
         this.totalPrice = foodTotal + boozeTotal + drinkTotal;
         DecimalFormat t = new DecimalFormat("#.##");
 
-        System.out.println("\nmodel.Order total is: $" +t.format(this.totalPrice));
+        System.out.println("\nOrder total is: $" +t.format(this.totalPrice));
         populateOrderNum();
     }
 
