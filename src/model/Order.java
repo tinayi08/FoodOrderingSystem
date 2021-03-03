@@ -138,12 +138,19 @@ public class Order {
         for (Food f : this.foodOrdered) {
             foodTotal += f.getPrice();
         }
+
         for (Drink d : this.drinksOrdered) {
             drinkTotal += d.getPrice();
         }
-        for (AlcoholicDrink b : this.boozeOrdered) {
-            boozeTotal += b.getPrice();
+
+        try {
+            for (AlcoholicDrink b : this.boozeOrdered) {
+                boozeTotal += b.getPrice();
+            }
+        } catch (NullPointerException e) {
+
         }
+
         this.totalPrice = foodTotal + boozeTotal + drinkTotal;
         DecimalFormat t = new DecimalFormat("#.##");
 
