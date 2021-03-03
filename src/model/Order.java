@@ -9,15 +9,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Order {
-    User customer;
-    Restaurant restaurant;
-    ArrayList<Drink> drinksOrdered;
-    ArrayList<Food> foodOrdered;
-    ArrayList<AlcoholicDrink> boozeOrdered;
-    double totalPrice;
-    static int orderNumber;
+    private User customer;
+    private Restaurant restaurant;
+    private ArrayList<Drink> drinksOrdered;
+    private ArrayList<Food> foodOrdered;
+    private ArrayList<AlcoholicDrink> boozeOrdered;
+    private double totalPrice;
+    private static int orderNumber;
 
-    public static void populateOrderNum() {
+    private static void populateOrderNum() {
         orderNumber = 1000;
         orderNumber++;
         System.out.println("Your order number is: " + orderNumber);
@@ -135,7 +135,6 @@ public class Order {
         double foodTotal = 0;
         double boozeTotal = 0;
         double drinkTotal = 0;
-
         try {
             for (Food f : this.foodOrdered) {
                 foodTotal += f.getPrice();

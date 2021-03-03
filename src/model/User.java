@@ -4,10 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class User {
-    String name;
-    String address;
-    String phoneNumber;
-    int paymentMethod; //1 for cash, 2 for credit card
+    private String name;
+    private String address;
+    private String phoneNumber;
+    private int paymentMethod; //1 for cash, 2 for credit card
 
 
     public void create() {

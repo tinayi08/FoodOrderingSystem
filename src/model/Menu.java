@@ -7,9 +7,9 @@ import model.Food;
 import java.util.ArrayList;
 
 public class Menu {
-    ArrayList<Drink> drinks;
-    ArrayList<Food> food;
-    ArrayList<AlcoholicDrink> booze;
+    private ArrayList<Drink> drinks;
+    private ArrayList<Food> food;
+    private ArrayList<AlcoholicDrink> booze;
 
     public Menu(ArrayList<Food> food, ArrayList<Drink> drinks, ArrayList<AlcoholicDrink> booze) {
         this.drinks = drinks;
@@ -26,7 +26,6 @@ public class Menu {
             return drinks.size();
         }
         return 0;
-
     }
 
     public int displayFood() {
@@ -49,7 +48,6 @@ public class Menu {
             return booze.size();
         }
         return 0;
-
     }
 }
 

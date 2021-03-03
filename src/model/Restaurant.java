@@ -9,14 +9,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Restaurant {
-    String name;
-    String cuisine;
-    int zipcode;
-    String phoneNumber;
-    int capacity;
-    int averageWaitTime;
-    Menu menu;
-    int id;
+    private String name;
+    private String cuisine;
+    private int zipcode;
+    private String phoneNumber;
+    private int capacity;
+    private int averageWaitTime;
+    private Menu menu;
+    private int id;
 
     public String getName() {
         return name;

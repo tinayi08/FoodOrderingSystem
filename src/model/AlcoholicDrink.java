@@ -1,8 +1,8 @@
 package model;
 
 public class AlcoholicDrink extends Drink {
-    String liquorType;
-    double percentage;
+    private String liquorType;
+    private double percentage;
 
     public AlcoholicDrink(int id, String name, int calories, double price, String liquorType, double percentage) {
         super(id, name, calories, price);
