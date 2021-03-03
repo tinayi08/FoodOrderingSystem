@@ -1,10 +1,10 @@
 package model;
 
-public class Drink {
-    int id;
-    String name;
-    int calories;
-    double price;
+public class Drink extends MenuItems{
+
+    public Drink(int id, String name, int calories, double price) {
+        super(id, name, calories, price);
+    }
 
     public int getId() {
         return id;
@@ -12,14 +12,6 @@ public class Drink {
 
     public double getPrice() {
         return price;
-    }
-
-    public Drink(int id, String name, int calories, double price) {
-        this.id = id;
-        this.name = name;
-        this.calories = calories;
-        this.price = price;
-
     }
 
     @Override

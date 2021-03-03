@@ -1,10 +1,10 @@
 package model;
 
-public class Food {
-    double price;
-    int calories;
-    String name;
-    int id;
+public class Food extends MenuItems {
+
+    public Food(int id, String name, int calories, double price) {
+        super(id, name, calories, price);
+    }
 
     public double getPrice() {
         return price;
@@ -20,13 +20,6 @@ public class Food {
                 " for " + name +
                 ", Calories: " + calories +
                 ", Price: $" + price;
-    }
-
-    public Food(int id, String name, int calories,double price) {
-        this.price = price;
-        this.calories = calories;
-        this.name = name;
-        this.id = id;
     }
 
     public String foodAdded() {
