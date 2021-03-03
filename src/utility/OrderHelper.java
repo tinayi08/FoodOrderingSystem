@@ -30,7 +30,6 @@ public class OrderHelper {
                     price = Double.parseDouble(drinkInfo[3]);
                     break;
                 }
-
             }
             in.close();
         } catch (FileNotFoundException exc) {

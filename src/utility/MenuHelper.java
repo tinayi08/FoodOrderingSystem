@@ -63,7 +63,6 @@ public class MenuHelper {
                      Drink drinks = new Drink(id, drinkName, calories, price);
                      drinkItems.add(drinks);
                  }
-
              }
              in.close();
          } catch (FileNotFoundException exc) {
