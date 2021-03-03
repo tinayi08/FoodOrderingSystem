@@ -9,7 +9,10 @@ public class User {
     private String phoneNumber;
     private int paymentMethod; //1 for cash, 2 for credit card
 
-
+    /**
+     * This method will take user input to create a user profile.
+     *
+     */
     public void create() {
         Scanner scan = new Scanner(System.in);
         System.out.println("What is your name?");

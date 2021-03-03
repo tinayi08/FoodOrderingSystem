@@ -46,6 +46,12 @@ public class Restaurant {
 
     }
 
+    /**
+     * This method read a list of restaurants from a file and
+     * will display all restaurants available to order from.
+     *
+     * @return ArrayList of restaurants
+     */
     public static ArrayList displayAll() {
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
         try {

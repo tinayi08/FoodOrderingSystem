@@ -17,6 +17,7 @@ public class Menu {
         this.booze = booze;
     }
 
+
     public int displayDrinks() {
         if (drinks.size() > 0) {
             System.out.println("\nPlease select from the following beverages:");

@@ -5,7 +5,12 @@ import java.util.Scanner;
 
 public class Validator {
 
-
+    /**
+     * This method will check to ensure a valid entry has entered by the user
+     *
+     * @param paymentEntry
+     * @return valid entry
+     */
     public static int payment(int paymentEntry) {
         Scanner scan = new Scanner(System.in);
         while (paymentEntry != 1 && paymentEntry != 2) {
@@ -15,6 +20,13 @@ public class Validator {
         return paymentEntry;
     }
 
+    /**
+     * This method will check to ensure a valid entry has entered by the user
+     *
+     * @param restSelection
+     * @param rest
+     * @return valid entry
+     */
     public static int restaurantSelection(int restSelection, ArrayList<Restaurant> rest) {
         Scanner scan = new Scanner(System.in);
         while (restSelection > (rest.size()) || restSelection == 0) {
@@ -24,6 +36,12 @@ public class Validator {
         return restSelection;
     }
 
+    /**
+     * This method will check to ensure a valid entry has entered by the user
+     * @param selectedItem
+     * @param drink
+     * @return valid entry
+     */
     public static int drinkSelection(int selectedItem, ArrayList<Drink> drink) {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
@@ -42,6 +60,13 @@ public class Validator {
         return selectedItem;
     }
 
+    /**
+     * This method will check to ensure a valid entry has entered by the user
+     *
+     * @param selectedItem
+     * @param food
+     * @return valid entry
+     */
     public static int foodSelection(int selectedItem, ArrayList<Food> food) {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
@@ -60,6 +85,13 @@ public class Validator {
         return selectedItem;
     }
 
+    /**
+     * This method will check to ensure a valid entry has entered by the user
+     *
+     * @param selectedBooze
+     * @param booze
+     * @return valid entry
+     */
     public static int boozeSelected(int selectedBooze, ArrayList<AlcoholicDrink> booze) {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;

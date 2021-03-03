@@ -14,12 +14,23 @@ public class AppController {
         controller.orderingLogic(controller.initUser());
     }
 
+    /**
+     * This method will initiate a user.
+     *
+     * @return a user
+     */
     public User initUser() {
         User user = new User();
         user.create();
         return user;
     }
 
+    /**
+     * This method will display a list of restaurants for the user
+     * to select from.
+     *
+     * @return returns the selected restaurant
+     */
     public Restaurant selectRestaurant() {
         System.out.println("\nPlease select from the following restaurants: ");
         ArrayList<Restaurant> rest = Restaurant.displayAll();
@@ -42,7 +53,14 @@ public class AppController {
         return rest.get(selection-1);
     }
 
-
+    /**
+     * This method will go through the menu items. It will display the list of
+     * drinks and allow the user to select what drinks to order. Then go through
+     * the list of food and then the list of alcoholic drinks. Once the user has
+     * selected the items to order. A order total will display with an order number.
+     *
+     * @param user
+     */
     public void orderingLogic(User user){
         Restaurant selectedRestaurant = selectRestaurant();
         Order order = new Order(user, selectedRestaurant);

@@ -11,7 +11,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class OrderHelper {
-
+    /**
+     * This method will read a list of drinks from a file and will list them
+     * for the user to chose from
+     *
+     * @param selectedDrinkID
+     * @return user selected Drink
+     */
     public static Drink getDrink(int selectedDrinkID) {
         int id = 0;
         String drinkName = "";
@@ -41,6 +47,13 @@ public class OrderHelper {
         return drink;
     }
 
+    /**
+     * This method will read a list of Food from a file and will list them
+     * for the user to chose from
+     *
+     * @param selectedFoodID
+     * @return user selected Food
+     */
     public static Food getFood(int selectedFoodID) {
         int id = 0;
         String name = "";
@@ -71,6 +84,13 @@ public class OrderHelper {
         return food;
     }
 
+    /**
+     * This method will read a list of Alcoholic Drinks available from a file
+     * and will display them for the user to chose from
+     *
+     * @param selectedBoozeID
+     * @return user selected AlcoholicDrink
+     */
     public static AlcoholicDrink getBooze(int selectedBoozeID) {
         int id = 0;
         String name = "";

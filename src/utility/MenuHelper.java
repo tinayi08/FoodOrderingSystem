@@ -13,6 +13,13 @@ import java.util.ArrayList;
 
 public class MenuHelper {
 
+    /**
+     *
+     * Method will read alcoholic items from the file and will populate
+     * and return as an ArrayList model.AlcoholicDrink
+     *
+     * @return ArrayList model.AlcoholicDrink
+     */
     public static ArrayList populateBooze(String restaurantName) {
         ArrayList<AlcoholicDrink> boozeList = new ArrayList<>();
         try {

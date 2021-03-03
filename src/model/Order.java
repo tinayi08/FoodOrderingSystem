@@ -28,6 +28,13 @@ public class Order {
         this.restaurant = restaurant;
     }
 
+    /**
+     * This method will allow the user to add drinks to their order.
+     * User can select 0 to move to the next menu section.
+     * Try/Catch has been added to catch any incorrect entries.
+     * Selected drinks will be added to an Array List.
+     *
+     */
     public void orderDrinks() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
@@ -63,6 +70,13 @@ public class Order {
         }
     }
 
+    /**
+     * This method will allow the user to add food to their order.
+     * User can select 0 to move to the next menu section.
+     * Try/Catch has been added to catch any incorrect entries.
+     * Selected food will be added to an Array List.
+     *
+     */
     public void orderFood() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
@@ -96,6 +110,14 @@ public class Order {
             }
         }
     }
+
+    /**
+     * This method will allow the user to add alcohol to their order.
+     * User can select 0 to move to the next menu section.
+     * Try/Catch has been added to catch any incorrect entries.
+     * Selected alcohol will be added to an Array List.
+     *
+     */
     public void orderBooze() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nPlease select from the items above to add to your order or enter 0 to move to the next section.");
@@ -130,6 +152,10 @@ public class Order {
         }
     }
 
+    /**
+     * This method will calculate the order total and provide an order number.
+     *
+     */
     public void placeOrder() {
         System.out.println("\nThank you for your order.");
         double foodTotal = 0;
