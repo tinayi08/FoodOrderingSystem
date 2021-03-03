@@ -135,12 +135,21 @@ public class Order {
         double foodTotal = 0;
         double boozeTotal = 0;
         double drinkTotal = 0;
-        for (Food f : this.foodOrdered) {
-            foodTotal += f.getPrice();
+
+        try {
+            for (Food f : this.foodOrdered) {
+                foodTotal += f.getPrice();
+            }
+        } catch (NullPointerException e) {
+
         }
 
-        for (Drink d : this.drinksOrdered) {
-            drinkTotal += d.getPrice();
+        try {
+            for (Drink d : this.drinksOrdered) {
+                drinkTotal += d.getPrice();
+            }
+        } catch (NullPointerException e) {
+
         }
 
         try {
