@@ -90,7 +90,7 @@ public class Order {
 
     public void printOrderedFood() {
         if (this.foodOrdered.size() > 0) {
-            System.out.println("model.Food added:");
+            System.out.println("Food added:");
             for (Food f : this.foodOrdered) {
                 System.out.println(f.foodAdded());
             }
