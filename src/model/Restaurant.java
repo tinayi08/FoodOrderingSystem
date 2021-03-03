@@ -46,11 +46,6 @@ public class Restaurant {
 
     }
 
-    public Menu createMenu() {
-        Menu menu = new Menu(MenuHelper.populateFood(this.name), MenuHelper.populateDrink(this.name), MenuHelper.populateBooze(this.name));
-        return menu;
-    }
-
     public static ArrayList displayAll() {
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
         try {
