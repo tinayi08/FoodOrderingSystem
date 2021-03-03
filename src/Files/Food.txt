@@ -6,3 +6,4 @@
 6,Cheese Quesadilla,400,4.99,Chipotle
 7,CheeseBurger,500,4.99,McDonalds
 8,Chicken Nuggets,400,3.99,McDonalds
+9,Cheese Pizza,500,6.99,Pizza Hut

@@ -5,3 +5,4 @@
 5,Lemonade,100,2.99,McDonalds
 6,Orange Juice,120,2.59,McDonalds
 7,Coke,200,2.99,McDonalds
+8,Coke,200,2.99,Pizza Hut
