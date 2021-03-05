@@ -161,28 +161,19 @@ public class Order {
         double foodTotal = 0;
         double boozeTotal = 0;
         double drinkTotal = 0;
-        try {
-            for (Food f : this.foodOrdered) {
-                foodTotal += f.getPrice();
-            }
-        } catch (NullPointerException e) {
 
+        for (Food f : this.foodOrdered) {
+            foodTotal += f.getPrice();
         }
 
-        try {
-            for (Drink d : this.drinksOrdered) {
-                drinkTotal += d.getPrice();
-            }
-        } catch (NullPointerException e) {
-
+        for (Drink d : this.drinksOrdered) {
+            drinkTotal += d.getPrice();
         }
 
-        try {
+        if(this.boozeOrdered != null) {
             for (AlcoholicDrink b : this.boozeOrdered) {
                 boozeTotal += b.getPrice();
             }
-        } catch (NullPointerException e) {
-
         }
 
         this.totalPrice = foodTotal + boozeTotal + drinkTotal;
