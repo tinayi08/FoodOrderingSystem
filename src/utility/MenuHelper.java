@@ -173,7 +173,7 @@ public class MenuHelper {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String query = "SELECT * FROM FoodOrderingSystem.drinks;";
+            String query = "SELECT * FROM FoodOrderingSystem.food;";
 
             // Result set get the result of the SQL query
             resultSet = statement.executeQuery(query);
@@ -184,7 +184,7 @@ public class MenuHelper {
                 String restaurant = resultSet.getString("rest");
                 if (restaurantName.equalsIgnoreCase(restaurant)) {
                     int id = resultSet.getInt("id");
-                    String name = resultSet.getString("drink");
+                    String name = resultSet.getString("item");
                     int calories = resultSet.getInt("calories");
                     double price = resultSet.getDouble("price");
 
