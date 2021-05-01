@@ -2,13 +2,11 @@ package utility;
 
 import model.AlcoholicDrink;
 import model.Drink;
-import model.File;
 import model.Food;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MenuHelper {
@@ -22,28 +20,63 @@ public class MenuHelper {
      */
     public static ArrayList populateBooze(String restaurantName) {
         ArrayList<AlcoholicDrink> boozeList = new ArrayList<>();
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
         try {
-            BufferedReader in = new BufferedReader(new FileReader(File.BOOZE.path));
-            String str;
-            //TODO - add a condition where readLine is not null and not an empty line
-            while ((str = in.readLine()) != null){
-                String [] boozeInfo = str.split(",");
-                if (restaurantName.equalsIgnoreCase(boozeInfo[6])) {
-                    int number = Integer.parseInt(boozeInfo[0]);
-                    String name = boozeInfo[1];
-                    int calories = Integer.parseInt(boozeInfo[2]);
-                    double price = Double.parseDouble(boozeInfo[3]);
-                    String alcohol = boozeInfo[4];
-                    double percentage = Double.parseDouble(boozeInfo[5]);
-                    AlcoholicDrink booze = new AlcoholicDrink(number, name, calories, price, alcohol, percentage);
+
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.booze;";
+
+            // Result set get the result of the SQL query
+            resultSet = statement.executeQuery(query);
+
+
+            // loop through the result set while there are more records
+            while (resultSet.next()) {
+
+                String restaurant = resultSet.getString("rest");
+                if (restaurantName.equalsIgnoreCase(restaurant)) {
+                    int id = resultSet.getInt("id");
+                    String name = resultSet.getString("drink");
+                    int calories = resultSet.getInt("calories");
+                    double price = resultSet.getDouble("price");
+                    String alcohol = resultSet.getString("type");
+                    double percentage = resultSet.getDouble("percent");
+
+                    AlcoholicDrink booze = new AlcoholicDrink(id, name, calories, price, alcohol, percentage);
                     boozeList.add(booze);
                 }
             }
-            in.close();
-        } catch (FileNotFoundException exc) {
+
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
             exc.printStackTrace();
-        } catch (IOException exc) {
-            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return boozeList;
     }
@@ -57,27 +90,59 @@ public class MenuHelper {
     public static ArrayList populateDrink(String restaurantName) {
 
         ArrayList<Drink> drinkItems = new ArrayList<>();
-         try {
-             BufferedReader in = new BufferedReader(new FileReader(File.DRINKS.path));
-             String str;
-             while ((str = in.readLine()) != null) {
-                 String [] drinkInfo = str.split(",");
-                 if (restaurantName.equalsIgnoreCase(drinkInfo[4])){
-                     int id = Integer.parseInt(drinkInfo[0]);
-                     String drinkName = drinkInfo[1];
-                     int calories = Integer.parseInt(drinkInfo[2]);
-                     double price = Double.parseDouble(drinkInfo[3]);
-                     Drink drinks = new Drink(id, drinkName, calories, price);
-                     drinkItems.add(drinks);
-                 }
-             }
-             in.close();
-         } catch (FileNotFoundException exc) {
-             exc.printStackTrace();
-         } catch (IOException exc) {
-             exc.printStackTrace();
-         }
-         return drinkItems;
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.drinks;";
+
+            // Result set get the result of the SQL query
+            resultSet = statement.executeQuery(query);
+
+            // loop through the result set while there are more records
+            while (resultSet.next()) {
+
+                String restaurant = resultSet.getString("rest");
+                if (restaurantName.equalsIgnoreCase(restaurant)) {
+                    int id = resultSet.getInt("id");
+                    String name = resultSet.getString("drink");
+                    int calories = resultSet.getInt("calories");
+                    double price = resultSet.getDouble("price");
+
+                    Drink drinks = new Drink(id, name, calories, price);
+                    drinkItems.add(drinks);
+                }
+            }
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
+            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return drinkItems;
     }
 
     /**
@@ -90,25 +155,59 @@ public class MenuHelper {
     public static ArrayList populateFood(String restaurantName) {
 
         ArrayList<Food> foodItems = new ArrayList<>();
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
         try {
-            BufferedReader in = new BufferedReader(new FileReader(File.FOOD.path));
-            String str;
-            while ((str = in.readLine()) != null) {
-                String [] foodInfo = str.split(",");
-                if (restaurantName.equalsIgnoreCase(foodInfo[4])) {
-                    int id = Integer.parseInt(foodInfo[0]);
-                    String name = foodInfo[1];
-                    int calories = Integer.parseInt(foodInfo[2]);
-                    double price = Double.parseDouble(foodInfo[3]);
+
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.drinks;";
+
+            // Result set get the result of the SQL query
+            resultSet = statement.executeQuery(query);
+
+            // loop through the result set while there are more records
+            while (resultSet.next()) {
+
+                String restaurant = resultSet.getString("rest");
+                if (restaurantName.equalsIgnoreCase(restaurant)) {
+                    int id = resultSet.getInt("id");
+                    String name = resultSet.getString("drink");
+                    int calories = resultSet.getInt("calories");
+                    double price = resultSet.getDouble("price");
+
                     Food food = new Food(id, name, calories, price);
                     foodItems.add(food);
                 }
             }
-            in.close();
-        } catch (FileNotFoundException exc) {
+
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
             exc.printStackTrace();
-        } catch (IOException exc) {
-            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return foodItems;
     }

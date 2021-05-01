@@ -2,11 +2,10 @@ package model;
 
 import utility.MenuHelper;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.sql.*;
 import java.util.ArrayList;
+
 
 public class Restaurant {
     private String name;
@@ -54,28 +53,65 @@ public class Restaurant {
      */
     public static ArrayList displayAll() {
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
         try {
-            BufferedReader in = new BufferedReader(new FileReader(File.RESTAURANTS.path));
-            String str;
-            while ((str = in.readLine()) != null) {
-                String [] restaurantInfo = str.split(",");
-                int id = Integer.parseInt(restaurantInfo[0]);
-                String name = restaurantInfo[1];
-                String cuisine = restaurantInfo[2];
-                int zipcode = Integer.parseInt(restaurantInfo[3]);
-                String phoneNumber = restaurantInfo[4];
-                int capacity = Integer.parseInt(restaurantInfo[5]);
-                int averageWaitTime = Integer.parseInt(restaurantInfo[6]);
-                
+
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.restaurants;";
+
+            // Result set get the result of the SQL query
+            resultSet = statement.executeQuery(query);
+
+
+            // loop through the result set while there are more records
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String cuisine = resultSet.getString("type");
+                int zipcode = resultSet.getInt("zipcode");
+                String phoneNumber = resultSet.getString("phone");
+                int capacity = resultSet.getInt("capacity");
+                int averageWaitTime = resultSet.getInt("wait_time");
+
                 Restaurant restaurants = new Restaurant(id, name, cuisine, zipcode, phoneNumber, capacity, averageWaitTime);
                 restaurantList.add(restaurants);
+
             }
-            in.close();
-        } catch (FileNotFoundException exc) {
+
+
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
             exc.printStackTrace();
-        } catch (IOException exc) {
-            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return restaurantList;
     }
 
