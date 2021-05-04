@@ -1,9 +1,0 @@
-1,Chicken Burrito,650,7.99,Chipotle
-2,Steak Burrito,700,8.59,Chipotle
-3,Chicken Tacos,600,6.99,Chipotle
-4,Steak Tacos,600,7.59,Chipotle
-5,Chips & Salsa,250,2.99,Chipotle
-6,Cheese Quesadilla,400,4.99,Chipotle
-7,CheeseBurger,500,4.99,McDonalds
-8,Chicken Nuggets,400,3.99,McDonalds
-9,Cheese Pizza,500,6.99,Pizza Hut
