@@ -2,13 +2,10 @@ package utility;
 
 import model.AlcoholicDrink;
 import model.Drink;
-import model.File;
 import model.Food;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.sql.*;
 
 public class OrderHelper {
     /**
@@ -23,26 +20,57 @@ public class OrderHelper {
         String drinkName = "";
         int calories = 0;
         double price = 0;
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
 
         try {
-            BufferedReader in = new BufferedReader(new FileReader(File.DRINKS.path));
-            String str;
-            while ((str = in.readLine()) != null) {
-                String [] drinkInfo = str.split(",");
-                id = Integer.parseInt(drinkInfo[0]);
+
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.drinks;";
+
+            // Result set get the result of the SQL query
+            resultSet = statement.executeQuery(query);
+
+
+            while (resultSet.next()) {
+
+                id = resultSet.getInt("id");
                 if (id == selectedDrinkID) {
-                    drinkName = drinkInfo[1];
-                    calories = Integer.parseInt(drinkInfo[2]);
-                    price = Double.parseDouble(drinkInfo[3]);
+                    drinkName = resultSet.getString("drink");
+                    calories = resultSet.getInt("calories");
+                    price = resultSet.getDouble("price");
                     break;
                 }
             }
-            in.close();
-        } catch (FileNotFoundException exc) {
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
             exc.printStackTrace();
-        } catch (IOException exc) {
-            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         Drink drink = new Drink(id, drinkName, calories, price);
         return drink;
     }
@@ -60,26 +88,56 @@ public class OrderHelper {
         int calories = 0;
         double price = 0;
 
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+
         try {
-            BufferedReader in = new BufferedReader(new FileReader(File.FOOD.path));
-            String str;
-            while ((str = in.readLine()) != null) {
-                String [] foodInfo = str.split(",");
-                id = Integer.parseInt(foodInfo[0]);
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.food;";
+
+            // Result set get the result of the SQL query
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+
+                id = resultSet.getInt("id");
                 if (id == selectedFoodID) {
-                    name = foodInfo[1];
-                    calories = Integer.parseInt(foodInfo[2]);
-                    price = Double.parseDouble(foodInfo[3]);
+                    name = resultSet.getString("item");
+                    calories = resultSet.getInt("calories");
+                    price = resultSet.getDouble("price");
                     break;
                 }
 
             }
-            in.close();
-        } catch (FileNotFoundException exc) {
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
             exc.printStackTrace();
-        } catch (IOException exc) {
-            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         Food food = new Food(id, name, calories, price);
         return food;
     }
@@ -99,27 +157,59 @@ public class OrderHelper {
         String alcohol = "";
         double percentage = 0;
 
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
         try {
-            BufferedReader in = new BufferedReader(new FileReader(File.BOOZE.path));
-            String str;
-            while ((str = in.readLine()) != null) {
-                String [] boozeInfo = str.split(",");
-                id = Integer.parseInt(boozeInfo[0]);
+
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Setup the connection with the DB
+
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost/FoodOrderingSystem?"
+                            + "user=root&password=&useSSL=false");
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM FoodOrderingSystem.booze;";
+
+            resultSet = statement.executeQuery(query);
+
+
+
+            while (resultSet.next()) {
+
+                id = resultSet.getInt("id");
                 if (id == selectedBoozeID) {
-                    name = boozeInfo[1];
-                    calories = Integer.parseInt(boozeInfo[2]);
-                    price = Double.parseDouble(boozeInfo[3]);
-                    alcohol = boozeInfo[4];
-                    percentage = Double.parseDouble(boozeInfo[5]);
+                    name = resultSet.getString("drink");
+                    calories = resultSet.getInt("calories");
+                    price = resultSet.getDouble("price");
+                    alcohol = resultSet.getString("type");
+                    percentage = resultSet.getDouble("percent");
                     break;
                 }
             }
-            in.close();
-        } catch (FileNotFoundException exc) {
+        } catch (SQLException exc) {
+            System.out.println("Exception occurred");
             exc.printStackTrace();
-        } catch (IOException exc) {
-            exc.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Exception occurred - driver not found on classpath");
+            e.printStackTrace();
+        } finally {
+            try {
+                // close all JDBC elements
+                statement.close();
+                resultSet.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         AlcoholicDrink booze = new AlcoholicDrink(id, name, calories, price, alcohol, percentage);
         return booze;
     }
